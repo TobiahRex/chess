@@ -1,0 +1,179 @@
+
+.hidden {
+  display: none;
+}
+
+div.jumbotron {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  width: 100%;
+  justify-content: space-around;
+}
+
+div.project-description {
+  align-self: center;
+  max-width: 500px;
+}
+
+div.code-example {
+  padding: 5px;
+  /* font-size: 10px; */
+  color: #111;
+  background-color: lightgray;
+  border: 1px solid gray;
+  border-radius: 5px;
+  font-family: 'Courier New', Courier, monospace;
+  margin-bottom: 50px;
+}
+div.example {
+  font-size: 10px;
+  color: #111;
+}
+
+textarea.new-moves,
+textarea.new-moves:focus {
+  background-color: lightgray;
+  border: 1px solid gray;
+  border-radius: 5px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+div.how-to {
+  color: #111;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+div.message-header {
+  font-size: 14px;
+}
+
+button.btn {
+  color: #000;
+  font-weight: bold;
+}
+
+
+button.btn-success {
+  color: #000000;
+  font-weight: bold;
+  font-size: 18px;
+
+}
+
+.entry-name,
+.new-moves,
+.encode-moves {
+  margin-bottom: 10px;
+}
+
+div.template {
+  display: none;
+}
+
+.encode-moves {
+  width: 100%;
+  background-color: rgb(69, 177, 2);
+  height: 38px;
+}
+
+input.new-entry.form-control {
+  width: 20%;
+  /*font-style: italic;*/
+  font-size: 18px;
+}
+
+input.new-post.form-control {
+  width: 60%;
+}
+
+input.new-entry, input.new-post {
+  color: #333;
+}
+
+div.posts-body {
+  padding: 10px;
+}
+
+div.posts-body.panel-success {
+  border: 1px solid grey;
+}
+
+div.panel-success {
+  border: solid 1px rgb(128, 154, 0, 0);
+}
+.panel-success > .panel-heading {
+  color: black;
+  /* background-color: rgba(0, 230, 31, 0.05); */
+  /* border-color: rgba(128, 154, 0, 0); */
+}
+.post-row {
+  /* background-color: #1d1d1d; */
+  display: flex;
+  flex-direction: column;
+}
+.post-row > .panel-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-body > .action-btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.results--move {
+  display: flex;
+}
+
+.move-source,
+.move-person,
+.move-object {
+  width: 300px;
+  text-align: start;
+}
+
+/* .panel-default > .panel-heading {
+  background-color: #2b2b2b;
+} */
+
+input.template-edit-message.form-control {
+  width: 80%;
+  /*background-color: rgba(184, 184, 184, 0.5);*/
+  font-style: italic;
+  font-size: 18px;
+}
+
+.post-message {
+  margin : 20px 0px;
+}
+
+button.edit-btn, button.save-btn {
+  margin-right : 10px;
+}
+
+blockquote {
+  margin-left: 22%;
+}
+
+i.pull-right.text-info {
+  margin-top: 23px;
+  font-size: 12px;
+}
+
+hr {
+  border-color: #111;
+}
+
+img {
+  width: 15%;
+  height: 15%;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > .navbar-default .navbar-nav > .active > a:focus {
+    color: #2a9fd6;
+    background-color: transparent;
+}

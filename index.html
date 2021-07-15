@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" charset="utf-8"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+  <script src="main.js" charset="utf-8"></script>
+  <title>
+    Message Board
+  </title>
+</head>
+
+<body>
+  <!-- <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-target">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <span class="navbar-brand"> <span class="text-primary">by</span> Taps Taps Chess Club</span>
+      </div>
+    </div>
+  </nav> -->
+
+  <div class="container-fluid">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-10 col-xs-offset-1">
+          <div class="jumbotron">
+            <h1 class='text-center'>Chess Move Encoder</h1>
+            <div class='project-description'>
+              <div class="how-to">
+                Paste a list of chess moves in the text area to encode the moves into a mnemonic sequence. Move list should match the following format
+              </div>
+              <div class="example">example</div>
+              <div class="code-example">
+                1.e4 e5 2.Nf3 Nc6 3.d4 exd4 4.Nxd4 Nf6 5.Nxc6 bxc6
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form action="post-form" class="new-post form-inline text-center row">
+        <div class="form-group col-xs-8 col-xs-offset-2">
+          <input type="text" class="entry-name col-xs-3 form-control" id="" placeholder="Variation Name">
+          <textarea
+            type="text"
+            class="new-moves col-xs-6 form-control"
+            id=""
+            rows="5"
+          ></textarea>
+          <button class="encode-moves btn btn-success col-xs-2"><samp>Encode</samp></button>
+        </div>
+      </form>
+      <br>
+      <div class="row col-xs-12">
+        <div class="all-posts panel panel-default row">
+          <div class="panel-heading lead hidden"> Results </div>
+          <div class="append-here">
+            <!-- MESSAGE WILL APPEND HERE -->
+          </div>
+
+          <div id='' class="template posts-body col-xs-10 col-xs-offset-1 row fadeIn animated panel panel-success">
+            <div class="form-inline hidden edit-row">
+              <div class="panel-body form-group col-xs-12">
+                <div class="row">
+                  <input type='text' class="template-edit-message text-warning form-control lead" value="Edit This Message">
+                  <button class="cancel-btn btn btn-danger pull-right">Cancel</button>
+                  <button class="save-btn btn btn-success pull-right">Save</button>
+                </div>
+              </div>
+            </div>
+            <div class="post-row">
+              <div class="panel-heading">
+                <h5 class="template-name panel-title">TEMPLATE_TITLE</h5>
+              </div>
+              <hr>
+              <div class="panel-body">
+                <div class="results">
+                  <div class="template-results--move hidden">
+                    <p class="move-person">TEMPLATE_PERSON</p>
+                    <p class="move-object">TEMPLATE_OBJECT</p>
+                    <p class="move-source">TEMPLATE_MOVE</p>
+                  </div>
+                  <div class="append-results--move">
+                    <!-- APPEND_HERE -->
+                  </div>
+                  <hr>
+                  <p class="move-list">TEMPLATE_MOVES</p>
+                </div>
+                <hr>
+                <!-- <div class="action-btns">
+                  <button class="delete-btn btn btn-danger pull-right">Delete</button>
+                  <button class="edit-btn btn btn-primary pull-right">Edit</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
