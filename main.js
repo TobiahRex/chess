@@ -24,7 +24,10 @@ function renderEntry(newEntryEl, mnemonics) {
       $nextResult.find('.move-object').text(object);
       $nextResult.find('.move-source').text(source);
     }
-    if (renderType !== 'verbose') {
+    if (renderType === 'concise') {
+      $nextResult.find('.move-info').text(`${person}, ${object}`)
+    }
+    if (renderType === 'no-moves') {
       $nextResult.find('.move-person').text(person);
       $nextResult.find('.move-object').text(object);
     }
@@ -56,12 +59,6 @@ function getNewEntry(moves) {
     .text(moves)
 
   return $newEntry;
-}
-
-function handleRenderOption(event) {
-  event.preventDefault();
-  debugger;
-  $('.render-option')
 }
 
 function encodeMoves(data) {
@@ -1145,7 +1142,7 @@ var MoveMap = {
   e5: {
     P: {
       c: 'Jack Banning',
-      o: 'Baseball & Globe',
+      o: 'Baseball & Glove',
     },
     R: {
       c: 'Roman',

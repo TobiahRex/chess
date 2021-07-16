@@ -940,7 +940,7 @@ const moveDictionary = {
   e5: {
     P: {
       c: 'Jack Banning',
-      o: 'Baseball & Globe',
+      o: 'Baseball & Glove',
     },
     R: {
       c: 'Roman',

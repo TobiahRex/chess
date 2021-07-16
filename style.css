@@ -6,6 +6,7 @@
 div.jumbotron {
   margin-top: 50px;
   display: flex;
+  align-self: flex-start;
   flex-direction: column;
   height: 300px;
   width: 100%;
@@ -13,7 +14,7 @@ div.jumbotron {
 }
 
 div.project-description {
-  align-self: center;
+  align-self: flex-start;
   max-width: 500px;
 }
 
@@ -31,6 +32,28 @@ div.example {
   font-size: 10px;
   color: #111;
 }
+
+div.input-header {
+  display: flex;
+  width: 100%;
+}
+.input-header > .text-input {
+  width: 60%;
+}
+
+div.render-input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 40px;
+  width: 40%;
+}
+
+.render-input > .format-option {
+  text-decoration: underline;
+}
+
+
 
 textarea.new-moves,
 textarea.new-moves:focus {
@@ -76,7 +99,8 @@ div.template {
 }
 
 .encode-moves {
-  width: 100%;
+  margin-top: 50px;
+  min-width: 150px;
   background-color: rgb(69, 177, 2);
   height: 38px;
 }
@@ -123,6 +147,11 @@ div.panel-success {
 .post-row-no-moves > .panel-body {
   display: flex;
   flex-direction: column;
+}
+
+p.move-info.concise-move {
+  margin: 0px;
+  text-align: left;
 }
 
 .panel-body > .action-btns {
