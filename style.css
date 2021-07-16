@@ -1,6 +1,6 @@
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 div.jumbotron {
@@ -106,17 +106,21 @@ div.posts-body.panel-success {
 div.panel-success {
   border: solid 1px rgb(128, 154, 0, 0);
 }
-.panel-success > .panel-heading {
+.panel-success > .results-heading {
   color: black;
   /* background-color: rgba(0, 230, 31, 0.05); */
   /* border-color: rgba(128, 154, 0, 0); */
 }
-.post-row {
+.post-row-verbose,
+.post-row-concise,
+.post-row-no-moves {
   /* background-color: #1d1d1d; */
   display: flex;
   flex-direction: column;
 }
-.post-row > .panel-body {
+.post-row-verbose > .panel-body,
+.post-row-concise > .panel-body,
+.post-row-no-moves > .panel-body {
   display: flex;
   flex-direction: column;
 }
@@ -124,6 +128,12 @@ div.panel-success {
 .panel-body > .action-btns {
   display: flex;
   justify-content: space-between;
+}
+
+.concise > .move,
+.verbose,
+.no-moves {
+  display: flex;
 }
 
 .results--move {

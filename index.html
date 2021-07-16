@@ -49,7 +49,7 @@
         </div>
       </div>
 
-      <form action="post-form" class="new-post form-inline text-center row">
+      <div class="form-inline text-center row">
         <div class="form-group col-xs-8 col-xs-offset-2">
           <input type="text" class="entry-name col-xs-3 form-control" id="" placeholder="Variation Name">
           <textarea
@@ -60,36 +60,57 @@
           ></textarea>
           <button class="encode-moves btn btn-success col-xs-2"><samp>Encode</samp></button>
         </div>
-      </form>
-      <br>
-      <div class="row col-xs-12">
-        <div class="all-posts panel panel-default row">
-          <div class="panel-heading lead hidden"> Results </div>
-          <div class="append-here">
-            <!-- MESSAGE WILL APPEND HERE -->
-          </div>
-
-          <div id='' class="template posts-body col-xs-10 col-xs-offset-1 row fadeIn animated panel panel-success">
-            <div class="form-inline hidden edit-row">
-              <div class="panel-body form-group col-xs-12">
-                <div class="row">
-                  <input type='text' class="template-edit-message text-warning form-control lead" value="Edit This Message">
-                  <button class="cancel-btn btn btn-danger pull-right">Cancel</button>
-                  <button class="save-btn btn btn-success pull-right">Save</button>
-                </div>
+        <br>
+        <div class="row col-xs-12">
+          <div class="all-posts panel panel-default row">
+            <div class="render-options">
+              <div class="option">
+                <input checked class="render-option" type="radio" name="render-type" value="concise" id="concise-option">
+                <label for="concise">Concise</label>
+              </div>
+              <div class="option">
+                <input type="radio" name="render-type" value="verbose" id="verbose-option">
+                <label for="verbose">Verbose</label>
+              </div>
+              <div class="option">
+                <input class="render-option" type="radio" name="render-type" value="no-moves" id="no-moves-option">
+                <label for="no-moves">No Moves</label>
               </div>
             </div>
-            <div class="post-row">
+            <div class="append-here">
+              <!-- MESSAGE WILL APPEND HERE -->
+            </div>
+
+            <div id='' class="template posts-body col-xs-10 col-xs-offset-1 row fadeIn animated panel panel-success">
+              <div class="form-inline hidden edit-row">
+                <div class="panel-body form-group col-xs-12">
+                  <div class="row">
+                    <input type='text' class="template-edit-message text-warning form-control lead" value="Edit This Message">
+                    <button class="cancel-btn btn btn-danger pull-right">Cancel</button>
+                    <button class="save-btn btn btn-success pull-right">Save</button>
+                  </div>
+                </div>
+              </div>
               <div class="panel-heading">
                 <h5 class="template-name panel-title">TEMPLATE_TITLE</h5>
               </div>
               <hr>
               <div class="panel-body">
                 <div class="results">
-                  <div class="template-results--move hidden">
+                  <div class="template-move hidden verbose">
                     <p class="move-person">TEMPLATE_PERSON</p>
                     <p class="move-object">TEMPLATE_OBJECT</p>
                     <p class="move-source">TEMPLATE_MOVE</p>
+                  </div>
+                  <div class="template-move hidden concise">
+                    <div class="move">
+                      <p class="move-person">TEMPLATE_PERSON</p>
+                      <p class="move-object">TEMPLATE_OBJECT</p>
+                    </div>
+                  </div>
+                  <div class="template-move hidden no-moves">
+                    <p class="move-person">TEMPLATE_PERSON</p>
+                    <p class="move-object">TEMPLATE_OBJECT</p>
                   </div>
                   <div class="append-results--move">
                     <!-- APPEND_HERE -->

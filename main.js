@@ -3,19 +3,47 @@ $(() => {
 });
 
 function handleEncodeMoves(event) {
-  event.preventDefault();
-
   let moveText = $('.new-moves').val();
-  let entryName = $('.entry-name').val();
   $('.new-moves').val('')
-  $('.entry-name').val('')
 
   let [moves, mnemonics] = encodeMoves(moveText);
+  const $newEntry = getNewEntry(moves, mnemonics);
+  renderEntry($newEntry, mnemonics);
+}
+
+function renderEntry(newEntryEl, mnemonics) {
+  let renderType = $('input:checked').val();
+  if (!renderType) return;
+  mnemonics.forEach(([source, person, object], i) => {
+    const $nextResult = newEntryEl.find(`.template-move.${renderType}`).clone();
+    $nextResult
+      .removeClass('template-move')
+      .removeClass('hidden')
+    if (renderType === 'verbose') {
+      $nextResult.find('.move-person').text(person);
+      $nextResult.find('.move-object').text(object);
+      $nextResult.find('.move-source').text(source);
+    }
+    if (renderType !== 'verbose') {
+      $nextResult.find('.move-person').text(person);
+      $nextResult.find('.move-object').text(object);
+    }
+    newEntryEl.find('.append-results--move').append($nextResult)
+  });
+  if ($('div.append-here').children().length) {
+    newEntryEl.insertBefore('.append-here > .posts-body:first');
+  } else {
+    $('div.append-here').append(newEntryEl);
+  }
+}
+
+function getNewEntry(moves) {
+  let entryName = $('.entry-name').val();
+  $('.entry-name').val('')
   let $newEntry = $('div.template').clone();
-  $('.panel-heading').removeClass('hidden');
 
   $newEntry
-    .removeClass('template hidden')
+    .removeClass('template')
     .addClass('new-post')
     .attr('id', Date.now());
   $newEntry
@@ -24,28 +52,16 @@ function handleEncodeMoves(event) {
     .addClass('new-entry')
     .text(entryName)
   $newEntry
-    .find('.template-post-message')
-    .removeClass('template-post-message')
-    .addClass('post-message')
-    .text(JSON.stringify(mnemonics))
-  $newEntry
     .find('.move-list')
     .text(moves)
 
-    mnemonics.forEach(([source, person, object]) => {
-    const $nextResult = $newEntry
-      .find('.template-results--move')
-      .clone()
-    $nextResult
-      .removeClass('template-results--move')
-      .removeClass('hidden')
-      .addClass('results--move')
-      .find('.move-source').text(source)
-    $nextResult.find('.move-person').text(person)
-    $nextResult.find('.move-object').text(object)
-    $newEntry.find('.append-results--move').append($nextResult)
-  });
-  $('div.append-here').append($newEntry);
+  return $newEntry;
+}
+
+function handleRenderOption(event) {
+  event.preventDefault();
+  debugger;
+  $('.render-option')
 }
 
 function encodeMoves(data) {
