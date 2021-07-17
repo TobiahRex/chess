@@ -62,7 +62,7 @@ function getNewEntry(moves) {
 }
 
 function encodeMoves(data) {
-  const results = data.match(/([0-9]+.)|([O-O-O]+)|([RNBQK]?)([abcdefgh]+)([0-8])([+])|([RNBQK]?)([abcdefghx]+)([0-8])|([RNBQK])([0-8])([abcdefgh])([0-8])/gm);
+  const results = data.match(/([0-9]+.)|([O-O-O]+)|([RNBQK]?)([abcdefgh]+)([0-8])([+])|([RNBQK]?)([abcdefghx]+)([0-8])|([RNBQK])([0-8])(x?)([abcdefgh])([0-8])/gm);
   const moveList = results.reduce((map, r) => {
     if (r.includes('.')) { // is move number
       const [moveNum] = r.match(/[0-9]/gi);
@@ -100,12 +100,18 @@ function encodeMoves(data) {
  */
 function parseMove(info) {
   if (info.move.includes('+')) {
+    if (info.move.length > 4) {
+      return handleTwoOptionMoveCheck(info);
+    }
     return handleCheckMove(info);
   }
   if (info.move.includes('O-O')) {
     return handleCastleMove(info);
   }
   if (info.move.includes('x')) {
+    if (info.move.length > 4) {
+      return handleTwoOptionMoveCapture(info);
+    }
     return handleCaptureMove(info);
   }
   if (info.move.includes('=')) {
@@ -115,6 +121,33 @@ function parseMove(info) {
     return handleTwoOptionMove(info);
   }
   return handleNormalMove(info);
+}
+
+function handleTwoOptionMoveCapture(info) {
+  const [
+    piece, square, story,
+  ] = [
+      majorPieces.includes(info.move[0]) ? info.move[0] : 'P',
+      info.move.slice(3),
+      info.turn === 'white' ? 'c' : 'o'
+    ];
+  return MoveMap[square][piece][story];
+}
+
+function handleTwoOptionMoveCheck(info) {
+  let [
+    piece,
+    square,
+    story,
+  ] = [, , info.turn === 'white' ? 'c' : 'o'];
+  if (majorPieces.includes(info.move[0])) {
+    piece = info.move[0];
+    square = info.move.slice(2, info.move.length - 1);
+  } else {
+    piece = 'P';
+    square = info.move.slice(1, info.move.length - 1);
+  }
+  return MoveMap[square][piece][story];
 }
 
 function handleCheckMove(info) {
@@ -166,13 +199,13 @@ function handleCaptureMove(info) {
 
 function handlePawnPromotion(info) {
   const [
-    [destination], piece, story,
+    [square], piece, story,
   ] = [
       info.move.split('='),
       'P',
       info.turn === 'white' ? 'c' : 'o'
     ];
-  return moveMap[destination, piece, story];
+  return moveMap[square, piece, story];
 }
 
 function handleTwoOptionMove(info) {
